@@ -15,4 +15,13 @@ class LoteVacina(models.Model):
     quantidade_estoque = models.IntegerField()
     vacina = models.ForeignKey(Vacina, on_delete=models.PROTECT)
 
+class Vacinacao(models.Model):
+    vacinacao_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    data_vacinacao = models.DateField()
+    data_aprovado = models.DateField()
+    data_agendamento = models.DateField()
+    data_solicitacao = models.DateField()
+    privada = models.BooleanField()
+    vacinado = models.BooleanField()
+    vacina = models.ForeignKey(Vacina, on_delete=models.PROTECT)
 
