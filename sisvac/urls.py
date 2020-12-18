@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import TemplateView
 from rest_framework import serializers
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('vacinacao.urls')),
+   # path('', include('vacinacao.urls')),
+    path('', TemplateView.as_view(template_name='index.html')),
     path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
 ]
