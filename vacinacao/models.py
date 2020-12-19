@@ -15,15 +15,8 @@ class LoteVacina(models.Model):
     quantidade_estoque = models.IntegerField()
     vacina = models.ForeignKey(Vacina, on_delete=models.PROTECT)
 
-class Municipio(models.Model):
-    uf = models.IntegerField()
-    nome_uf = models.CharField(max_length=20)
-    codigo_municipio = models.IntegerField()
-    nome_municipio = models.CharField(max_length=100)
-
 class Estabelecimento(models.Model):
     co_unidade = models.IntegerField()
-    nome_fantasi = models.CharField(max_length=32)
     co_cnes = models.IntegerField()
     nu_cnpj_mantenedora = models.IntegerField()
     tp_pfpj = models.IntegerField()
@@ -76,7 +69,7 @@ class Estabelecimento(models.Model):
     dt_atualizacao_origem = models.DateField()
     co_tipo_estabelecimento = models.IntegerField()
     co_atividade_principal = models.IntegerField()
-    st_contrato_formalizado = models.CharField(max_length=32)
+    st_contrato_formalizado = models.CharField(max_length=1)
     ds_natureza_jur = models.CharField(max_length=32)
 
 class Vacinacao(models.Model):
@@ -90,3 +83,10 @@ class Vacinacao(models.Model):
     vacina = models.ForeignKey(Vacina, on_delete=models.PROTECT)
     user_id = models.CharField(max_length=32, null=True)
     estabelecimento = models.ForeignKey(Estabelecimento, on_delete=models.PROTECT, null=True)
+
+class Municipio(models.Model):
+    municipio_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    uf = models.IntegerField()
+    nome_uf = models.CharField(max_length=20)
+    codigo_municipio = models.IntegerField()
+    nome_municipio = models.CharField(max_length=100)
