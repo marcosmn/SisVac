@@ -6,7 +6,7 @@ from django.contrib.auth.models import User, Group
 from vacinacao.models import Vacinacao
 from rest_framework import viewsets
 from rest_framework import permissions
-from vacinacao.serializers import UserSerializer, GroupSerializer, AgendamentoSerializer
+from vacinacao.serializers import UserSerializer, GroupSerializer, AgendamentoSerializer, EstabelecimentoSerializer
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -27,6 +27,11 @@ class GroupViewSet(viewsets.ModelViewSet):
 class AgendamentoViewSet(viewsets.ModelViewSet):
     queryset = Vacinacao.objects.all().order_by('-data_agendamento')
     serializer_class = AgendamentoSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class EstabelecimentoViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all().order_by('-date_joined')
+    serializer_class = EstabelecimentoSerializer
     permission_classes = [permissions.IsAuthenticated]
 
 def index(request):
