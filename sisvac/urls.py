@@ -33,6 +33,7 @@ urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='index.html')),
     #path('', include('vacinacao.urls')),
     #path('', TemplateView.as_view(template_name='index.html')),
+    url(r'^auth/', include('rest_framework_social_oauth2.urls')),
     path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     path('api/v1/', include(router.urls)),
     #path('api/v1/', include('rest_framework.urls', namespace='rest_framework'))
