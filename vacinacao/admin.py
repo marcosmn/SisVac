@@ -56,7 +56,12 @@ class EstabelecimentoAdmin(admin.ModelAdmin):
             for elemento in csv_file:
                 print(elemento[2])
                 #for contador in elemento:
-                serializer = EstabelecimentoSerializer(data={'co_unidade': elemento[1]})
+                estabelecimento = Estabelecimento.objects.create(
+                    co_unidade=elemento[1],
+
+                )
+                
+                #serializer = EstabelecimentoSerializer(data={'co_unidade': elemento[1]})
             self.message_user(request, "Your csv file has been uploaded")
             return redirect("..")
         form = CsvUploadForm()
