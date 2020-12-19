@@ -1,1 +1,22 @@
 http://127.0.0.1:8000/static/css/app.fb0c6e1c.css
+
+
+###
+http://localhost:8000/auth/login/google-oauth2
+
+
+###
+
+POST http://localhost:8000/auth/convert-token
+"grant_type=convert_token&client_id=<django-oauth-generated-client_id>&client_secret=<django-oauth-generated-client_secret>&backend=google-oauth2&token=<google_token>" 
+
+###
+
+POST http://localhost:8000/auth/token HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+client_id=foo
+&password=bar
+-d "client_id=<client_id>&client_secret=<client_secret>&grant_type=password&username=<user_name>&password=<password>" 
+
+code=4%2F0AY0e-g4hPDoMKqJYAr-Qru2NWKWZiYZ9upSHBrcSAsPSLQhaa4rSul18dSCsh6IrwOEYVw&redirect_uri=https%3A%2F%2Fdevelopers.google.com%2Foauthplayground&client_id=407408718192.apps.googleusercontent.com&client_secret=************&scope=&grant_type=authorization_code

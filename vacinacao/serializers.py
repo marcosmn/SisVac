@@ -1,11 +1,16 @@
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from rest_framework import serializers
 from vacinacao.models import Vacinacao
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ['url', 'username', 'email']
+        fields = ['url', 'username', 'email', 'groups']
+
+class GroupSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Group
+        fields = ['url', 'name']
 
 class CarteiraSerializer(serializers.Serializer):
     codigo = serializers.IntegerField(read_only=True)
@@ -15,4 +20,4 @@ class CarteiraSerializer(serializers.Serializer):
 class AgendamentoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Vacinacao
-        fields = ['data_solicitacao', 'data_agendamento', 'vacina', 'user_id', 'estabelecimento']
+        fields = ['data_solicitacao', 'data_agendamento', 'vacina', 'paciente', 'estabelecimento']

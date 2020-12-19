@@ -2,10 +2,11 @@
 
 from django.http import HttpResponse
 
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
+from vacinacao.models import Vacinacao
 from rest_framework import viewsets
 from rest_framework import permissions
-from vacinacao.serializers import UserSerializer, AgendamentoSerializer
+from vacinacao.serializers import UserSerializer, GroupSerializer, AgendamentoSerializer
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -15,8 +16,16 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticated]
 
+class GroupViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Group.objects.all()
+    serializer_class = GroupSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
 class AgendamentoViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all().order_by('-date_joined')
+    queryset = Vacinacao.objects.all().order_by('-data_agendamento')
     serializer_class = AgendamentoSerializer
     permission_classes = [permissions.IsAuthenticated]
 

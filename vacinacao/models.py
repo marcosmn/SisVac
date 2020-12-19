@@ -1,5 +1,13 @@
+from django.contrib.auth.models import User
 from django.db import models
 import uuid
+
+class Paciente(models.Model):
+    paciente_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    cpf = models.CharField(verbose_name="número do cpf", max_length=11)
+    data_cadastro = models.DateField()
+
 
 class Vacina(models.Model):
     vacina_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -88,5 +96,5 @@ class Vacinacao(models.Model):
     privada = models.BooleanField()
     vacinado = models.BooleanField()
     vacina = models.ForeignKey(Vacina, on_delete=models.PROTECT)
-    user_id = models.CharField(max_length=32, null=True)
+    paciente = models.ForeignKey(Paciente, on_delete=models.PROTECT, null=True)
     estabelecimento = models.ForeignKey(Estabelecimento, on_delete=models.PROTECT, null=True)
