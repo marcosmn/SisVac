@@ -8,8 +8,9 @@ POST http://127.0.0.1:8000/api/v1/agendamentos/  HTTP/1.1
 content-type: application/json
 
 {
-    "data_agendamento" : "12/12/2020 08:00",
-    "user_id" : "50507737334",
+    "data_solicitacao" : "2020-12-15",
+    "data_agendamento" : "2020-12-25",
+    "user_id" : "50507737334"
 }
 
 ###

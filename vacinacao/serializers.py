@@ -15,4 +15,4 @@ class CarteiraSerializer(serializers.Serializer):
 class AgendamentoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Vacinacao
-        fields = ['data_agendamento', 'vacinado', 'vacina', 'user_id', 'estabelecimento']
+        fields = ['data_solicitacao', 'data_agendamento', 'vacina', 'user_id', 'estabelecimento']

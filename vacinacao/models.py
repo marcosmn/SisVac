@@ -81,13 +81,12 @@ class Estabelecimento(models.Model):
 
 class Vacinacao(models.Model):
     vacinacao_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    data_solicitacao = models.DateField()
+    data_agendamento = models.DateField()
     data_vacinacao = models.DateField()
     data_aprovado = models.DateField()
-    data_agendamento = models.DateField()
-    data_solicitacao = models.DateField()
     privada = models.BooleanField()
     vacinado = models.BooleanField()
     vacina = models.ForeignKey(Vacina, on_delete=models.PROTECT)
     user_id = models.CharField(max_length=32, null=True)
     estabelecimento = models.ForeignKey(Estabelecimento, on_delete=models.PROTECT, null=True)
-
