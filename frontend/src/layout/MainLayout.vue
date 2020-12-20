@@ -34,7 +34,7 @@
     components: {
       TopNavbar,
       ContentFooter,
-      DashboardContent,
+      MainContent,
       MobileMenu
     },
     methods: {
