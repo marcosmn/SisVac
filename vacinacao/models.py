@@ -2,11 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 import uuid
 
-class Paciente(models.Model):
-    paciente_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    cpf = models.CharField(verbose_name="número do cpf", max_length=11)
-    data_cadastro = models.DateField()
+
 
 
 class Vacina(models.Model):
@@ -18,6 +14,7 @@ class Vacina(models.Model):
 class LoteVacina(models.Model):
     lote_vacina_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     codigo = models.CharField(max_length=255)
+    data_cadastro = models.DateTimeField(auto_now_add=True)
     data_validade = models.DateField()
     quantidade = models.IntegerField()
     quantidade_estoque = models.IntegerField()
@@ -80,17 +77,6 @@ class Estabelecimento(models.Model):
     st_contrato_formalizado = models.CharField(max_length=1)
     ds_natureza_jur = models.CharField(max_length=32)
 
-class Vacinacao(models.Model):
-    vacinacao_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    data_solicitacao = models.DateField()
-    data_agendamento = models.DateField()
-    data_vacinacao = models.DateField()
-    data_aprovado = models.DateField()
-    privada = models.BooleanField()
-    vacinado = models.BooleanField()
-    vacina = models.ForeignKey(Vacina, on_delete=models.PROTECT)
-    paciente = models.ForeignKey(Paciente, on_delete=models.PROTECT, null=True)
-    estabelecimento = models.ForeignKey(Estabelecimento, on_delete=models.PROTECT, null=True)
 
 class Municipio(models.Model):
     municipio_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -98,3 +84,27 @@ class Municipio(models.Model):
     nome_uf = models.CharField(max_length=20)
     codigo_municipio = models.IntegerField()
     nome_municipio = models.CharField(max_length=100)
+
+class Paciente(models.Model):
+    paciente_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    email = models.CharField(max_length=254)
+    nome = models.CharField(max_length=254,  null=True)
+    fone = models.CharField(max_length=20,  null=True)
+    endereco = models.CharField(max_length=20,  null=True)
+    cep = models.CharField(max_length=20,  null=True)
+    user = models.OneToOneField(User, on_delete=models.PROTECT)
+    cpf = models.CharField(verbose_name="número do cpf", max_length=11,  null=True)
+    data_cadastro = models.DateTimeField(auto_now_add=True)
+    municipio = models.ForeignKey(Municipio, on_delete=models.PROTECT, null=True)
+
+class Vacinacao(models.Model):
+    vacinacao_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    data_solicitacao = models.DateTimeField(auto_now_add=True)
+    data_agendamento = models.DateTimeField()
+    data_vacinacao = models.DateTimeField()
+    data_aprovado = models.DateTimeField()
+    privada = models.BooleanField()
+    vacinado = models.BooleanField()
+    vacina = models.ForeignKey(Vacina, on_delete=models.PROTECT)
+    paciente = models.ForeignKey(Paciente, on_delete=models.PROTECT, null=True)
+    estabelecimento = models.ForeignKey(Estabelecimento, on_delete=models.PROTECT, null=True)
