@@ -2,9 +2,6 @@ from django.contrib.auth.models import User
 from django.db import models
 import uuid
 
-
-
-
 class Vacina(models.Model):
     vacina_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     descricao = models.CharField(max_length=255)
@@ -19,6 +16,14 @@ class LoteVacina(models.Model):
     quantidade = models.IntegerField()
     quantidade_estoque = models.IntegerField()
     vacina = models.ForeignKey(Vacina, on_delete=models.PROTECT)
+
+class Profissional(models.Model):
+    profissional_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    class Meta:
+        permissions = (
+            ('aplicar_vacina', "Pode aplicar vacina"),
+            ('aprovar_vacina', "Pode aprovar vacina")
+        )
 
 class Estabelecimento(models.Model):
     co_unidade = models.CharField(max_length=32)
@@ -115,11 +120,3 @@ class Vinculo(models.Model):
     vinculado = models.BooleanField()
     profissional = models.ForeignKey(Profissional, on_delete=models.PROTECT)
     estabelecimento = models.ForeignKey(Estabelecimento, on_delete=models.PROTECT)
-
-class Profissional(models.Model):
-    profissional_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    class Meta:
-        permissions = (
-            ('aplicar_vacina', "Pode aplicar vacina"),
-            ('aprovar_vacina', "Pode aprovar vacina")
-        )
