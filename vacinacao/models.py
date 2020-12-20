@@ -81,7 +81,7 @@ class Estabelecimento(models.Model):
     co_atividade_principal = models.CharField(max_length=32)
     st_contrato_formalizado = models.CharField(max_length=1)
     ds_natureza_jur = models.CharField(max_length=32)
-    funcionarios = models.ManyToManyField(Profissional, through='Vinculo')
+    funcionarios = models.ManyToManyField(Profissional, through='VinculoProfissional')
 
 class Municipio(models.Model):
     uf = models.IntegerField()
