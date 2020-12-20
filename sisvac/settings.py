@@ -223,3 +223,8 @@ SOCIAL_AUTH_PIPELINE = (
     # Update the user record with any changed info from the auth service.
     'social_core.pipeline.user.user_details',
 )
+GRUPOS = {
+    'profissional': 'Profissional de Saúde',
+    'coordenador': 'Coordenador do SUS',
+    'paciente': 'Paciente'
+}
