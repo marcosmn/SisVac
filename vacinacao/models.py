@@ -19,6 +19,9 @@ class LoteVacina(models.Model):
 
 class Profissional(models.Model):
     profissional_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    nome = models.CharField(max_length=254, null=True)
+    salario = models.IntegerField(null=True)
+    user = models.OneToOneField(User, on_delete=models.PROTECT, null=True)
     class Meta:
         permissions = (
             ('aplicar_vacina', "Pode aplicar vacina"),

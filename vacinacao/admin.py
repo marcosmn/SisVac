@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Vacina, LoteVacina, Municipio, Estabelecimento, Vacinacao
+from .models import Vacina, LoteVacina, Municipio, Estabelecimento
+from .models import Vacinacao, VinculoProfissional, Profissional
 
 from django.urls import path
 from django import forms
@@ -14,6 +15,7 @@ admin.site.register(Vacina)
 
 admin.site.register(LoteVacina)
 
+@admin.register(Municipio)
 class MunicipioAdmin(admin.ModelAdmin):
     change_list_template = "custom_admin/csv_upload_form.html"
 
@@ -133,3 +135,7 @@ class EstabelecimentoAdmin(admin.ModelAdmin):
         )
 
 admin.site.register(Vacinacao)
+
+admin.site.register(VinculoProfissional)
+
+admin.site.register(Profissional)
