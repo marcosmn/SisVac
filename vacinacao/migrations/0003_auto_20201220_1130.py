@@ -7,17 +7,23 @@ from django.conf import settings
 
 def criar_grupos(apps, schema_editor):
     # criar grupos automaticamente
-    Group.objects.create(name=settings.GRUPOS["profissional"])
-    groupProfissional = Group.objects.get(name=settings.GRUPOS["profissional"])
+    groupProfissional = Group.objects.get_or_create(name=settings.GRUPOS["profissional"])
+    permissoes = Permission.objects.get(codename='vacinacao.add_vacinacao')
+    groupProfissional.permissions.add(permissoes)
+    permissoes = Permission.objects.get(codename='vacinacao.change_vacinacao')
+    groupProfissional.permissions.add(permissoes)
+    permissoes = Permission.objects.get(codename='vacinacao.delete_vacinacao')
+    groupProfissional.permissions.add(permissoes)
+    permissoes = Permission.objects.get(codename='vacinacao.view_vacinacao')
+    groupProfissional.permissions.add(permissoes)
+
     grupoCoordenador = Group.objects.create(name=settings.GRUPOS["coordenador"])
     grupoPaciente = Group.objects.create(name=settings.GRUPOS["paciente"])
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('vacinacao', '0002_auto_20201220_1057'),
     ]
-
     operations = [
         migrations.RunPython(criar_grupos),
     ]

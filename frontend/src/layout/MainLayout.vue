@@ -3,7 +3,7 @@
     <side-bar>
       <mobile-menu slot="content"></mobile-menu>
       <sidebar-link to="/user/login">
-        <i class="nc-icon nc-chart-pie-35"></i>
+        <i class="nc-icon nc-bank"></i>
         <p>Home</p>
       </sidebar-link>
       <sidebar-link to="/user/notifications">

@@ -30,6 +30,8 @@ router.register(r'users', views.UserViewSet)
 #router.register(r'dados', loginviews.UserLoginViewSet, 'login')
 router.register(r'groups', views.GroupViewSet)
 router.register(r'agendamentos', views.AgendamentoViewSet)
+router.register(r'fila', views.FilaDeEsperaViewSet)
+router.register(r'carteira', views.CarteiraViewSet, basename=views.CarteiraSerializer)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
