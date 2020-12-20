@@ -8,3 +8,43 @@
 # EXEMPLO DE USO
 #   if user.has_perm('aplicar_vacina'):
 #       ...
+
+from vacinacao.models import Vacinacao
+import datetime
+
+def agendarVacinacao(dataAgendada, vacinacaoPrivada, keyVacina, keyPaciente, keyEstabelecimento):
+    print("Agendando vacinação")
+    vacinacao = Vacinacao.objects.get_or_create(
+        data_agendamento = dataAgendada,
+        privada = vacinacaoPrivada,
+        vacinado = False,
+        vacina = keyVacina,
+        paciente = keyPaciente,
+        estabelecimento = keyEstabelecimento
+    )
+
+def aprovarVacinacao(keyVacinacao, dataAprovada):
+    print("Aprovando vacinação")
+    vacinacao = Vacinacao.objects.get(id=keyVacinacao)
+    vacinacao.data_aprovado = dataAprovada
+    vacinacao.save()
+
+def aplicarVacinacao(keyVacinacao, dataAplicada):
+    print("Aplicando vacinação")
+    vacinacao = Vacinacao.objects.get(id=keyVacinacao)
+    vacinacao.data_vacinacao = dataAplicada
+    vacinacao.vacinado = True
+    vacinacao.save()
+
+def VacinacoesHoje():
+    vacinacoesHoje = Vacinacao.objects.filter(data_agendamento=datetime.date.today())
+    return vacinacoesHoje
+
+def retornarPosicao(keyPaciente):
+    elementos = Vacinacao.objects.filter(data_agendamento=datetime.date.today())
+    posicao = 0
+    for elemento in elementos:
+        if elemento.paciente == keyPaciente:
+            return posicao
+        posicao+=1
+    return -1

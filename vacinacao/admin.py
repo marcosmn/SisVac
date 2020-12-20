@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Vacina, LoteVacina, Municipio, Estabelecimento
-from .models import Vacinacao, VinculoProfissional, Profissional
+from .models import Vacinacao, VinculoProfissional, Profissional, Paciente
 
 from django.urls import path
 from django import forms
@@ -139,3 +139,5 @@ admin.site.register(Vacinacao)
 admin.site.register(VinculoProfissional)
 
 admin.site.register(Profissional)
+
+admin.site.register(Paciente)
