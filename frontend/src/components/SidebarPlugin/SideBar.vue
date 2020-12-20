@@ -7,7 +7,7 @@
       <div class="logo">
         <a href="#" class="simple-text logo__container">
             <div class="logo-img">
-                <img src="img/vue-logo.png" alt="">
+                <img src="img/logo.png" alt="Logo">
             </div>
           {{title}}
         </a>
@@ -43,7 +43,7 @@
     props: {
       title: {
         type: String,
-        default: 'Vue LBD'
+        default: 'SUS - SisVac'
       },
       backgroundColor: {
         type: String,
