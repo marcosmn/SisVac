@@ -6,10 +6,10 @@
           <h1>Autenticação</h1>
           <form class="form" ng-submit="login()">
             <button
-              class="btn btn-lg btn-google btn-block text-uppercase"
+              class="btn btn-lg btn-google  btn-primary text-uppercase"
               type="submit"
             >
-              <i class="fab fa-google mr-2"></i> Login com o Google
+              <i class="fa fa-google fa-2x"></i> Login com o Google
             </button>
           </form>
         </div>
@@ -28,4 +28,9 @@ export default {
 };
 </script>
 
-<style lang="stylus" scoped></style>
+<style scoped>
+  button.btn-google {
+    background-color : red;
+  }
+
+</style>
