@@ -225,5 +225,6 @@ SOCIAL_AUTH_PIPELINE = (
 )
 GRUPOS = {
     'profissional': 'Profissional de Saúde',
-    'coordenador': 'Coordenador do SUS'
+    'coordenador': 'Coordenador do SUS',
+    'paciente': 'Paciente'
 }

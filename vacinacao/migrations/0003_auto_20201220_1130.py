@@ -7,10 +7,10 @@ from django.conf import settings
 
 def criar_grupos(apps, schema_editor):
     # criar grupos automaticamente
-    Group.objects.create(name="testegrupo")
     Group.objects.create(name=settings.GRUPOS["profissional"])
     groupProfissional = Group.objects.get(name=settings.GRUPOS["profissional"])
-    Group.objects.create(name=settings.GRUPOS["coordenador"])
+    grupoCoordenador = Group.objects.create(name=settings.GRUPOS["coordenador"])
+    grupoPaciente = Group.objects.create(name=settings.GRUPOS["paciente"])
 
 class Migration(migrations.Migration):
 
