@@ -69,9 +69,5 @@ export default {
     text-align:left;
   }
 
-  div.login {
-
-
-  }
-
+  
 </style>
