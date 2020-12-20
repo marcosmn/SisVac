@@ -113,7 +113,7 @@ class Vacinacao(models.Model):
     paciente = models.ForeignKey(Paciente, on_delete=models.PROTECT)
     estabelecimento = models.ForeignKey(Estabelecimento, on_delete=models.PROTECT)
 
-class Vinculo(models.Model):
+class VinculoProfissional(models.Model):
     vinculo_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     data_entrada = models.DateTimeField()
     data_saida = models.DateTimeField()
