@@ -27,6 +27,15 @@ const actions = {
                 console.info(dados)
             })
     },
+    logout({state, commit}) {
+        console.info("Saindo..")
+        userService.logout()
+            .then((dados) => {
+                if(!dados.logado) {
+                    location.reload(true);
+                }
+            })
+    }
 }
 
 const mutations = {
@@ -35,7 +44,7 @@ const mutations = {
     },
     atualizaDados(state, dados) {
         state.email = dados.email
-        state.nome = dados.nome
+        state.nome = dados.username
         state.grupos = dados.grupos
     }
 }

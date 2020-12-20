@@ -8,11 +8,9 @@
               <div class="col">
                 <div class="colorfundo">
                   <h2>Acesso a conta</h2>
-                  <form class="form" ng-submit="login()">
-                    <button class="btn btn-lg btn-google" type="submit">
+                    <a class="btn btn-lg btn-google" href="/auth/login/google-oauth2">
                       <i class="fa fa-google fa-1x"></i> Login com o Google
-                    </button>
-                  </form>
+                    </a>
                 </div>
               </div>
             </div>

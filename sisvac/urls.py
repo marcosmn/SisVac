@@ -27,7 +27,6 @@ from vacinacao import loginviews
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
-#router.register(r'dados', loginviews.UserLoginViewSet, 'login')
 router.register(r'groups', views.GroupViewSet)
 router.register(r'agendamentos', views.AgendamentoViewSet)
 router.register(r'fila', views.FilaDeEsperaViewSet)
@@ -43,6 +42,7 @@ urlpatterns = [
     path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     path('api/v1/', include(router.urls)),
     path('api/v1/currentuser/', loginviews.UserLoginViewSet.as_view(), name='currentuser'),
+    path('api/v1/currentuser/logout', loginviews.UserLogout.as_view(), name='logout'),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
     #path('api/v1/', include('rest_framework.urls', namespace='rest_framework'))
 ]
