@@ -76,9 +76,9 @@ class Estabelecimento(models.Model):
     co_atividade_principal = models.CharField(max_length=32)
     st_contrato_formalizado = models.CharField(max_length=1)
     ds_natureza_jur = models.CharField(max_length=32)
+    funcionarios = models.ManyToManyField(Profissional, through='Vinculo')
 
 class Municipio(models.Model):
-    municipio_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     uf = models.IntegerField()
     nome_uf = models.CharField(max_length=20)
     codigo_municipio = models.IntegerField()
@@ -105,8 +105,16 @@ class Vacinacao(models.Model):
     privada = models.BooleanField()
     vacinado = models.BooleanField()
     vacina = models.ForeignKey(Vacina, on_delete=models.PROTECT)
-    paciente = models.ForeignKey(Paciente, on_delete=models.PROTECT, null=True)
-    estabelecimento = models.ForeignKey(Estabelecimento, on_delete=models.PROTECT, null=True)
+    paciente = models.ForeignKey(Paciente, on_delete=models.PROTECT)
+    estabelecimento = models.ForeignKey(Estabelecimento, on_delete=models.PROTECT)
+
+class Vinculo(models.Model):
+    vinculo_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    data_entrada = models.DateTimeField()
+    data_saida = models.DateTimeField()
+    vinculado = models.BooleanField()
+    profissional = models.ForeignKey(Profissional, on_delete=models.PROTECT)
+    estabelecimento = models.ForeignKey(Estabelecimento, on_delete=models.PROTECT)
 
 class Profissional(models.Model):
     profissional_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
