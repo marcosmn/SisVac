@@ -41,5 +41,13 @@ module.exports = {
         args[0].title = "Carteira de Vacinação Virtual";
         return args
       })
+  },
+  devServer: {
+    proxy: {
+      '^/api': {
+        target: 'http://localhost:8000',
+        changeOrigin: true
+      },
+    }
   }
 }

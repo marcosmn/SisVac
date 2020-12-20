@@ -8,6 +8,9 @@ Vue.config.productionTip = false
 // LightBootstrap plugin
 import LightBootstrap from './light-bootstrap-main'
 
+// Store
+import store from '@/store'
+
 // router setup
 import routes from './routes/routes'
 
@@ -31,5 +34,6 @@ const router = new VueRouter({
 
 new Vue({
   render: h => h(App),
-  router
+  router,
+  store
 }).$mount('#app')

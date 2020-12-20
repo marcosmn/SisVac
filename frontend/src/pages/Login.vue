@@ -19,12 +19,23 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
+
 export default {
   name: "login",
   data() {
     return {};
   },
-  methods: {},
+  computed: mapState({
+    logado: state => state.userState.logado,
+    nome: state => state.userState.nome
+  }),
+  methods: mapActions('userState', [
+    'getStatus'
+  ]),
+  created() {
+    this.$store.dispatch('userState/getStatus')
+  }
 };
 </script>
 
