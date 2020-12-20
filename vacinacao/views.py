@@ -34,7 +34,7 @@ class CarteiraViewSet(viewsets.ModelViewSet):
         return queryset
 
 class FilaDeEsperaViewSet(viewsets.ModelViewSet):
-    queryset = Vacinacao.objects.filter(data_agendamento=datetime.date.today()).order_by('-data_agendamento')
+    queryset = Vacinacao.objects.filter(data_agendamento__date=datetime.date.today()).order_by('-data_agendamento')
     serializer_class = FilaDeEsperaSerializer
     permission_classes = [permissions.IsAuthenticated]
 
