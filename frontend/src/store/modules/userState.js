@@ -1,8 +1,10 @@
 import userService from '../../services/userService'
 
 const state = {
+    email: "",
     logado: false,
-    nome: ""
+    nome: "",
+    grupos: []
 }
 
 const getters = {
@@ -17,9 +19,12 @@ const getters = {
 const actions = {
     getStatus({ state, commit }) {
         userService.verficaLogin()
-            .then((estado) => {
-                console.info("Estado:");
-                console.info(estado)
+            .then((dados) => {
+                commit('setLogado',dados.logado)
+                if(dados.logado) {
+                    commit('atualizaDados', dados)
+                } 
+                console.info(dados)
             })
     },
 }
@@ -27,6 +32,11 @@ const actions = {
 const mutations = {
     setLogado(state, estado) {
         state.logado = estado
+    },
+    atualizaDados(state, dados) {
+        state.email = dados.email
+        state.nome = dados.nome
+        state.grupos = dados.grupos
     }
 }
 

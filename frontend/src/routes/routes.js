@@ -9,7 +9,7 @@ import TableList from 'src/pages/TableList.vue'
 import Typography from 'src/pages/Typography.vue'
 import Icons from 'src/pages/Icons.vue'
 import Notifications from 'src/pages/Notifications.vue'
-import Upgrade from 'src/pages/Upgrade.vue'
+import Home from 'src/pages/Home.vue'
 import Login from 'src/pages/Login.vue'
 
 const routes = [
@@ -17,6 +17,11 @@ const routes = [
     path: '/',
     component: MainLayout,
     children: [
+      {
+        path: '/',
+        name: 'home',
+        component: Home,
+      },
       {
         path: '/user/login',
         name: 'login',

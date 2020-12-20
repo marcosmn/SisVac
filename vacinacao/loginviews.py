@@ -16,7 +16,8 @@ class UserLoginViewSet(APIView):
             return  Response({
                 'logado' : True,
                 'username': request.user.username,
-                'email': request.user.email
+                'email': request.user.email,
+                'grupos': request.user.groups.values_list('name',flat = True)
             })
         else:
             return  Response({

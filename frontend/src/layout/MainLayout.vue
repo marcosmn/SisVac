@@ -2,7 +2,7 @@
   <div class="wrapper">
     <side-bar>
       <mobile-menu slot="content"></mobile-menu>
-      <sidebar-link to="/user/login">
+      <sidebar-link to="/">
         <i class="nc-icon nc-bank"></i>
         <p>Home</p>
       </sidebar-link>
