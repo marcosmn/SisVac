@@ -1,18 +1,12 @@
 <template>
   <footer class="footer">
     <div class="container-fluid">
-      <nav>
-        <ul class="footer-menu">
-          <li>
-            <router-link :to="{path:'/admin'}">Dashboard</router-link>
-          </li>
-        </ul>
-      </nav>
+     
       <div class="copyright text-center">
-        &copy; Coded with
-        <i class="fa fa-heart heart"></i> by
-        <a href="https://binarcode.com" target="_blank">BinarCode</a>.
-        Designed by <a href="https://www.creative-tim.com/?ref=pdf-vuejs" target="_blank">Creative Tim</a>.
+        &copy; SUS - SisVac
+        by
+        <a href="https://www.linkedin.com/in/marcos-martins-n%C3%B3brega-606824119/" target="_blank">Marcos Martins  Nóbrega</a> /
+         <a href="https://www.linkedin.com/in/marcos-martins-n%C3%B3brega-606824119/" target="_blank">Curriculo Lattes</a>.
       </div>
     </div>
   </footer>
