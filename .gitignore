@@ -149,3 +149,6 @@ cython_debug/
 
 # production
 **/build
+/dist
+dist/
+/dist/*

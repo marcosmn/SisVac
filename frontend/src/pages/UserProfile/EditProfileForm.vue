@@ -122,7 +122,9 @@ export default {
   },
   methods: {
     updateProfile() {
+      userService.salvarDados(this.user);
       alert("Your data: " + JSON.stringify(this.user));
+
     },
   },
 };

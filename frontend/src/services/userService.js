@@ -12,5 +12,9 @@ export default {
     getDados() {
         return api.get('currentuser/dados')
             .then(response => response.data)
+    },
+    salvarDados(dados) {
+        return api.put('currentuser/dados', dados)
+            .then(response => response.data)
     }
 }
