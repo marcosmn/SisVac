@@ -64,6 +64,7 @@ class UserDadosViewSet(APIView):
                 paciente = Paciente.objects.get(user=request.user)
                 paciente.bairro = request.data["bairro"]
                 paciente.cep = request.data["cep"]
+                paciente.cpf = request.data["cpf"]
                 paciente.data_nascimento = request.data["data_nascimento"]
                 paciente.endereco = request.data["endereco"]
                 paciente.fone = request.data["fone"]

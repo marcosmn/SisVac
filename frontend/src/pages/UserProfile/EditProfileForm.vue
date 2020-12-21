@@ -79,9 +79,9 @@
         -->
         <div class="col-md-4">
           <base-input
-            type="number"
+            type="text"
             label="CEP"
-            placeholder="ZIP Cep"
+            placeholder="Cep"
             v-model="user.cep"
           >
           </base-input>
@@ -123,8 +123,6 @@ export default {
   methods: {
     updateProfile() {
       userService.salvarDados(this.user);
-      alert("Your data: " + JSON.stringify(this.user));
-
     },
   },
 };

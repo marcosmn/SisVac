@@ -6,6 +6,7 @@ import NotFound from '../pages/NotFoundPage.vue'
 import Home from 'src/pages/Home.vue'
 import Login from 'src/pages/Login.vue'
 import UserProfile from 'src/pages/UserProfile.vue'
+import Carteira from 'src/pages/Carteira.vue'
 
 const routes = [
   {
@@ -26,6 +27,11 @@ const routes = [
         path: '/user/cadastro',
         name: 'cadastro',
         component: UserProfile,
+      },
+      {
+        path: '/user/carteira',
+        name: 'carteria',
+        component: Carteira,
       }
     ]
   },
