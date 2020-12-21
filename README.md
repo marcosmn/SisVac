@@ -1,4 +1,23 @@
-# Python: Getting Started
+# Titulo do projeto
+
+Implementação do sistema de vacinação proposto pelo LAIS (EDITAL Nº 046/2020).
+
+## Descrição
+
+URL para o site no Heroku [enigmatic-citadel-38291](https://enigmatic-citadel-38291.herokuapp.com/#/).
+
+O SisVac(Nome escolhido para o projeto), é um sistema onde usuarios cadastrados podem agendar vacinas em lugar e horario de preferencia, de forma remota, e monitorar a sua carteira virtual de vacinação.
+
+### Funcionalidades usadas
+
+* Django
+* Django Rest Framework
+* Postgres
+* VueJs
+* Google OAuth2
+* Heroku
+
+# Getting Started
 
 A barebones Django app, which can easily be deployed to Heroku.
 
@@ -26,6 +45,8 @@ $ heroku local
 Your app should now be running on [localhost:5000](http://localhost:5000/).
 
 ## Deploying to Heroku
+
+URL para o site no Heroku [enigmatic-citadel-38291](https://enigmatic-citadel-38291.herokuapp.com/#/).
 
 ```sh
 $ heroku create
