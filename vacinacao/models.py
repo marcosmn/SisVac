@@ -22,11 +22,6 @@ class Profissional(models.Model):
     nome = models.CharField(max_length=254, null=True)
     salario = models.IntegerField(null=True)
     user = models.OneToOneField(User, on_delete=models.PROTECT, null=True)
-    class Meta:
-        permissions = (
-            ('aplicar_vacina', "Pode aplicar vacina"),
-            ('aprovar_vacina', "Pode aprovar vacina")
-        )
 
 class Estabelecimento(models.Model):
     co_unidade = models.CharField(max_length=32)
@@ -115,6 +110,11 @@ class Vacinacao(models.Model):
     vacina = models.ForeignKey(Vacina, on_delete=models.PROTECT)
     paciente = models.ForeignKey(Paciente, on_delete=models.PROTECT)
     estabelecimento = models.ForeignKey(Estabelecimento, on_delete=models.PROTECT)
+    class Meta:
+        permissions = (
+            ('aplicar_vacina', "Pode aplicar vacina"),
+            ('aprovar_vacina', "Pode aprovar vacina")
+        )
 
 class VinculoProfissional(models.Model):
     vinculo_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
