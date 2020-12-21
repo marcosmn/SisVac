@@ -193,7 +193,7 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
 ]
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'dist/static'),
+#    os.path.join(BASE_DIR, 'dist/static'),
     os.path.join(BASE_DIR, 'dist')
 ]
 
