@@ -46,6 +46,7 @@ const routes = [
         name: 'fila',
         component: TableList,
       },
+    
 
           ]
   },
