@@ -12,7 +12,7 @@ def criar_grupos(apps, schema_editor):
     # criar grupos automaticamente
     Group.objects.create(name=settings.GRUPOS['profissional'])
     groupProfissional = Group.objects.get(name=settings.GRUPOS['profissional'])
-    codenames = ['add_vacinacao', 'change_vacinacao', 'delete_vacinacao', 'view_vacinacao',
+    codenames = ['change_vacinacao', 'view_vacinacao',
     'add_lotevacina', 'change_lotevacina', 'delete_lotevacina', 'view_lotevacina',
     'view_vacina', 'view_paciente', 'view_estabelecimento'
     'aplicar_vacina', 'aprovar_vacina']
@@ -34,7 +34,7 @@ def criar_grupos(apps, schema_editor):
 
     Group.objects.create(name=settings.GRUPOS['paciente'])
     groupPaciente = Group.objects.get(name=settings.GRUPOS['paciente'])
-    codenames = ['']
+    codenames = ['add_vacinacao']
     permissoes = Permission.objects.filter(codename__in=codenames)
     groupPaciente.permissions.add(*permissoes)
     groupPaciente.save()

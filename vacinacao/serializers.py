@@ -21,7 +21,8 @@ class CarteiraSerializer(serializers.ModelSerializer):
 class AgendamentoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Vacinacao
-        fields = ['data_solicitacao', 'data_agendamento', 'vacina', 'paciente', 'estabelecimento']
+        fields = ['data_agendamento', 'vacina', 'estabelecimento', 'paciente']
+        #read_only_fields = ['paciente']
 
 class FilaDeEsperaSerializer(serializers.ModelSerializer):
     class Meta:
