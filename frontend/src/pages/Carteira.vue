@@ -14,8 +14,7 @@
             <l-table
               class="table-hover table-striped"
               :columns="vacinacao.columns"
-              :data="vacinacao.dados"
-            >
+              :data="vacinacao.data">           
             </l-table>
           </card>
         </div>
@@ -27,21 +26,32 @@
 import LTable from "src/components/Table.vue";
 import Card from "src/components/Cards/Card.vue";
 import userService from "@/services/userService";
-const vacinacaoColumns = ["Data", "Vacina", "Estabelecimento", "Particular"];
-const tableData = [
-  {
-    Data: 1,
-    Vacina: "Dakota Rice",
-    Estabelecimento: "$36.738",
-    Particular: "Niger",
+const vacinacaoColumns = ['Id','Vacina', 'Data', 'Hora', 'Posição', 'Chamado']
+  const tableData = [{
+    id: 1,
+    vacina: '',
+    data: '',
+    hora: '',
+    posição: '',
+    chamado: ''
   },
   {
-    Data: 2,
-    Vacina: "dd Rice",
-    Estabelecimento: "$36.dd738",
-    Particular: "Niger",
+    id: 2,
+    vacina: '',
+    data: '',
+    hora: '',
+    posição: '',
+    chamado: ''
   },
-];
+  {
+    id: 3,
+    vacina: '',
+    data: 'ddd',
+    hora: '',
+    posição: '',
+    chamado: ''
+  }
+  ]
 export default {
   components: {
     LTable,
@@ -50,17 +60,20 @@ export default {
   data() {
     return {
       vacinacao: {
-        columns: [...vacinacaoColumns],
-        dados: [...tableData],
-      },
-    };
-  },
+          columns: [...vacinacaoColumns],
+          data: [...tableData]
+        }
+    }
+  }
+  /*,
+  /
   mounted() {
     userService.getCarteira().then((dados) => {
-        console.info(dados);
-        this.vacinacao.dados = dados;
+      //  console.info(dados);
+      //  this.vacinacao.dados = dados;
     });
   },
+  */
 };
 </script>
 <style></style>

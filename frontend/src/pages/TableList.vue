@@ -76,10 +76,6 @@
         table1: {
           columns: [...tableColumns],
           data: [...tableData]
-        },
-        table2: {
-          columns: [...tableColumns],
-          data: [...tableData]
         }
       }
     }
