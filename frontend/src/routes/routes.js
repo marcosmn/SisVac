@@ -3,12 +3,6 @@ import MainLayout from '../layout/MainLayout.vue'
 import NotFound from '../pages/NotFoundPage.vue'
 
 // Admin pages
-import Overview from 'src/pages/Overview.vue'
-import UserProfile from 'src/pages/UserProfile.vue'
-import TableList from 'src/pages/TableList.vue'
-import Typography from 'src/pages/Typography.vue'
-import Icons from 'src/pages/Icons.vue'
-import Notifications from 'src/pages/Notifications.vue'
 import Home from 'src/pages/Home.vue'
 import Login from 'src/pages/Login.vue'
 
@@ -29,50 +23,7 @@ const routes = [
       }
     ]
   },
-  /*
-  {
-    path: '/admin',
-    component: DashboardLayout,
-    redirect: '/admin/overview',
-    children: [
-      {
-        path: 'overview',
-        name: 'Overview',
-        component: Overview
-      },
-      {
-        path: 'user',
-        name: 'User',
-        component: UserProfile
-      },
-      {
-        path: 'table-list',
-        name: 'Table List',
-        component: TableList
-      },
-      {
-        path: 'typography',
-        name: 'Typography',
-        component: Typography
-      },
-      {
-        path: 'icons',
-        name: 'Icons',
-        component: Icons
-      },
-      {
-        path: 'notifications',
-        name: 'Notifications',
-        component: Notifications
-      },
-      {
-        path: 'upgrade',
-        name: 'Upgrade to PRO',
-        component: Upgrade
-      }
-    ]
-  },
-  */
+ 
   { path: '*', component: NotFound }
 ]
 

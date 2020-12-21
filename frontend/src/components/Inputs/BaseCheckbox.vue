@@ -42,7 +42,7 @@
       inlineClass () {
         if (this.inline) {
           return `checkbox-inline`
-        }
+        } else return ''
       }
     },
     created () {

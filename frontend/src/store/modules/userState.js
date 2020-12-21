@@ -17,7 +17,7 @@ const getters = {
 }
 
 const actions = {
-    getStatus({ state, commit }) {
+    getStatus({ commit }) {
         userService.verficaLogin()
             .then((dados) => {
                 commit('setLogado',dados.logado)
@@ -27,7 +27,7 @@ const actions = {
                 console.info(dados)
             })
     },
-    logout({state, commit}) {
+    logout() {
         console.info("Saindo..")
         userService.logout()
             .then((dados) => {
