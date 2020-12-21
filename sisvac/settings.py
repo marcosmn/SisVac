@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
 import django_heroku
+import dj_database_url
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -93,16 +94,22 @@ WSGI_APPLICATION = 'sisvac.wsgi.application'
 #    }
 #}
 
-DATABASES = {
-    'default': {
-        'ENGINE': os.environ.get('DB_ENGINE', default = 'django.db.backends.sqlite3'),
-        'NAME': os.environ.get('DB_NAME', default = BASE_DIR / 'db.sqlite3'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST'),
-        'PORT': os.environ.get('DB_PORT'),
+
+DATABASES = {} 
+
+if (os.environ.get("AMBIENTE")!='dev'):
+    DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': os.environ.get('DB_ENGINE', default = 'django.db.backends.sqlite3'),
+            'NAME': os.environ.get('DB_NAME', default = BASE_DIR / 'db.sqlite3'),
+            'USER': os.environ.get('DB_USER'),
+            'PASSWORD': os.environ.get('DB_PASSWORD'),
+            'HOST': os.environ.get('DB_HOST'),
+            'PORT': os.environ.get('DB_PORT'),
+        }
     }
-}
 
 CORS_ORIGIN_ALLOW_ALL = False
 
