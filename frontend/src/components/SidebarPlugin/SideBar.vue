@@ -7,7 +7,7 @@
       <div class="logo">
         <a href="#" class="simple-text logo__container">
             <div class="logo-img">
-                <img src="img/logo.png" alt="Logo">
+                <img src="/static/img/logo-pequena.png" alt="Logo">
             </div>
           {{title}}
         </a>
@@ -55,7 +55,7 @@
       },
       backgroundImage: {
         type: String,
-        default: 'img/sidebar-5.jpg'
+        default: '/static/img/sidebar-5.jpg'
       },
       activeColor: {
         type: String,

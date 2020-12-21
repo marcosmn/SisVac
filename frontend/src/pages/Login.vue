@@ -8,9 +8,10 @@
               <div class="card-body">
                 <div class="imgtopologin">
                   <img
-                    class="avatar border-gray"
-                    src="img/logo.png"
+                    class=" border-gray"
+                    src="/static/img/logo-grande.png"
                     alt="Logo"
+                    height="170px"
                   />
                   <h2>Login</h2>
                   <p>Área de acesso restrito</p>
