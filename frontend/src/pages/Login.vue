@@ -4,18 +4,30 @@
       <div class="panel-body">
         <div class="text-center">
           <div class="container">
-            <div class="row">
-              <div class="col">
-                  <div class="imgtopologin">
-                      <img class="avatar border-gray" src="img/logo.png" alt="Logo"/>
-                    <h2>Login</h2>
-                    <p>Área de acesso restrito</p>
-                  </div>
-                    <a class="btn btn-lg btn-google" href="/auth/login/google-oauth2">
-                    <img width="30px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"/>
-                     Login com o Google
-                    </a>
+            <div class="card painel-login" >
+              <div class="card-body">
+                <div class="imgtopologin">
+                  <img
+                    class="avatar border-gray"
+                    src="img/logo.png"
+                    alt="Logo"
+                  />
+                  <h2>Login</h2>
+                  <p>Área de acesso restrito</p>
                 </div>
+                <a
+                  class="btn btn-lg btn-google"
+                  href="/auth/login/google-oauth2"
+                >
+                  <img
+                    width="30px"
+                    style="margin-bottom:3px; margin-right:5px"
+                    alt="Google sign-in"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"
+                  />
+                  Login com o Google
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -44,16 +56,21 @@ export default {
 </script>
 
 <style scoped>
-  .login {
-    height:503px;
-  }
-   
-  .imgtopologin {
-    padding-top:30px;
-  }
+.login {
+  height: 503px;
+}
 
-  button.btn-google {
-    background-color : white;
-  }
-    
+.painel-login {
+  width: 400px;
+  margin: 0 auto;
+  margin-top: 30px;
+  padding-bottom: 50px;
+}
+.imgtopologin {
+  padding-top: 30px;
+}
+
+button.btn-google {
+  background-color: white;
+}
 </style>
