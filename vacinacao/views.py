@@ -48,6 +48,16 @@ class FilaDeEsperaViewSet(viewsets.ModelViewSet):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    def list(self, request):
+        usuario = self.request.user
+        if usuario.has_perm('aplicar_vacina'):
+            pass
+            #self.aplicarVacinacao(queryset[0])
+    def aplicarVacinacao(self, keyVacinacaoPassada):
+        vacinacao = Vacinacao.objects.get(id=keyVacinacaoPassada)
+        vacinacao.data_vacinacao = datetime.now()
+        vacinacao.vacinado = True
+        vacinacao.save()
 
 def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")

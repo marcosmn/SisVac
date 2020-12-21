@@ -26,4 +26,4 @@ class AgendamentoSerializer(serializers.ModelSerializer):
 class FilaDeEsperaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Vacinacao
-        fields = ['vacinacao_id', 'vacina', 'paciente', 'estabelecimento']
+        fields = ['vacinacao_id', 'vacinado', 'vacina', 'paciente', 'estabelecimento']
