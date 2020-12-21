@@ -16,6 +16,13 @@
               :columns="vacinacao.columns"
               :data="vacinacao.data">           
             </l-table>
+            <!--
+            <ul id="teste">
+              <li v-for="value in vacinacao.data" :key="value.count">
+                {{ value }}
+              </li>
+            </ul>
+            -->
           </card>
         </div>
       </div>
@@ -26,32 +33,10 @@
 import LTable from "src/components/Table.vue";
 import Card from "src/components/Cards/Card.vue";
 import userService from "@/services/userService";
-const vacinacaoColumns = ['Id','Vacina', 'Data', 'Hora', 'Posição', 'Chamado']
-  const tableData = [{
-    id: 1,
-    vacina: '',
-    data: '',
-    hora: '',
-    posição: '',
-    chamado: ''
-  },
-  {
-    id: 2,
-    vacina: '',
-    data: '',
-    hora: '',
-    posição: '',
-    chamado: ''
-  },
-  {
-    id: 3,
-    vacina: '',
-    data: 'ddd',
-    hora: '',
-    posição: '',
-    chamado: ''
-  }
-  ]
+
+const vacinacaoColumns = ['Data_Vacinacao', 'Vacina', 'Estabelecimento', 'Privada']
+  const tableData = []
+
 export default {
   components: {
     LTable,
@@ -61,19 +46,33 @@ export default {
     return {
       vacinacao: {
           columns: [...vacinacaoColumns],
+          //data: []
           data: [...tableData]
         }
     }
-  }
-  /*,
-  /
+  },
   mounted() {
     userService.getCarteira().then((dados) => {
-      //  console.info(dados);
-      //  this.vacinacao.dados = dados;
+      console.info(dados);
+      this.vacinacao.data = dados.results;
     });
   },
-  */
 };
+/*
+export default {
+  el: '#teste',
+  data() {
+    return {
+      vacinacao: [],
+    };
+  },
+  mounted() {
+    userService.getCarteira().then((dados) => {
+      console.info(dados);
+      this.data.vacinacao = dados;
+    });
+  },
+}
+*/
 </script>
 <style></style>
