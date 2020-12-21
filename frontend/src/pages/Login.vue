@@ -21,7 +21,7 @@
                   href="/auth/login/google-oauth2"
                 >
                   <img
-                    width="30px"
+                    width="40px"
                     style="margin-bottom:3px; margin-right:5px"
                     alt="Google sign-in"
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"
@@ -62,13 +62,13 @@ export default {
 }
 
 .painel-login {
-  width: 400px;
+  width: 380px;
   margin: 0 auto;
   margin-top: 30px;
   padding-bottom: 50px;
 }
 .imgtopologin {
-  padding-top: 30px;
+  padding-top: 0px;
 }
 
 button.btn-google {
