@@ -5,7 +5,7 @@ from django.contrib.auth.models import Group, User
 from django.contrib.auth.models import Permission
 from django.core.management.sql import emit_post_migrate_signal
 from django.conf import settings
-from vacinacao.models import Vacina
+from vacinacao.models import Vacina, Agenda
 
 def criar_grupos(apps, schema_editor):
     db_alias = schema_editor.connection.alias
@@ -47,7 +47,14 @@ def popular_vacina(apps, schema_editor):
     Vacina.objects.create(descricao='vacina contra a poliomielite', sigla='SABIN')
     Vacina.objects.create(descricao='vacina contra febre amarela', sigla='FA')
     Vacina.objects.create(descricao='vacina contra sarampo, caxumba e rubéola', sigla='Tríplice Viral')
-
+"""
+def popular_agenda(apps, schema_editor):
+    Agenda.objects.create(data_agendamento='2020-12-22', hora='12', vacina=Vacina.objects.get(sigla='BSG'))
+    Agenda.objects.create(data_agendamento='2020-12-22', hora='13', vacina=Vacina.objects.get(sigla='VHB'))
+    Agenda.objects.create(data_agendamento='2020-12-22', hora='14', vacina=Vacina.objects.get(sigla='SABIN'))
+    Agenda.objects.create(data_agendamento='2020-12-22', hora='15', vacina=Vacina.objects.get(sigla='FA'))
+    Agenda.objects.create(data_agendamento='2020-12-22', hora='16', vacina=Vacina.objects.get(sigla='Tríplice Viral'))
+"""
 class Migration(migrations.Migration):
     dependencies = [
         ('vacinacao', '0001_initial'),
@@ -55,4 +62,5 @@ class Migration(migrations.Migration):
     operations = [
         migrations.RunPython(criar_grupos),
         migrations.RunPython(popular_vacina),
+        #migrations.RunPython(popular_agenda),
     ]
