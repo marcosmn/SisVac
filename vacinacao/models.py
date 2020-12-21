@@ -123,3 +123,10 @@ class VinculoProfissional(models.Model):
     vinculado = models.BooleanField()
     profissional = models.ForeignKey(Profissional, on_delete=models.PROTECT)
     estabelecimento = models.ForeignKey(Estabelecimento, on_delete=models.PROTECT)
+
+class Agenda(models.Model):
+    agenda_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    data_agendamento = models.DateField()
+    hora = models.IntegerField()
+    vacina = models.ForeignKey(Vacina, on_delete=models.PROTECT)
+    estabelecimento = models.ForeignKey(Estabelecimento, on_delete=models.PROTECT)

@@ -5,6 +5,7 @@ from django.contrib.auth.models import Group, User
 from django.contrib.auth.models import Permission
 from django.core.management.sql import emit_post_migrate_signal
 from django.conf import settings
+from vacinacao.models import Vacina
 
 def criar_grupos(apps, schema_editor):
     db_alias = schema_editor.connection.alias
@@ -14,7 +15,7 @@ def criar_grupos(apps, schema_editor):
     groupProfissional = Group.objects.get(name=settings.GRUPOS['profissional'])
     codenames = ['change_vacinacao', 'view_vacinacao',
     'add_lotevacina', 'change_lotevacina', 'delete_lotevacina', 'view_lotevacina',
-    'view_vacina', 'view_paciente', 'view_estabelecimento'
+    'view_vacina', 'view_paciente', 'view_estabelecimento', 'view_agenda',
     'aplicar_vacina', 'aprovar_vacina']
     permissoes = Permission.objects.filter(codename__in=codenames)
     groupProfissional.permissions.add(*permissoes)
@@ -24,9 +25,10 @@ def criar_grupos(apps, schema_editor):
     groupCoordenador = Group.objects.get(name=settings.GRUPOS['coordenador'])
     codenames = ['add_municipio', 'change_municipio', 'delete_municipio', 'view_municipio',
     'add_estabelecimento', 'change_estabelecimento', 'delete_estabelecimento', 'view_estabelecimento',
-    'add_vacina', 'change_vacina', 'delete_vacina', 'view_vacina'
+    'add_vacina', 'change_vacina', 'delete_vacina', 'view_vacina',
     'add_profissional', 'change_profissional', 'delete_profissional', 'view_profissional',
     'add_vinculoprofissional', 'change_vinculoprofissional', 'delete_vinculoprofissional', 'view_vinculoprofissional',
+    'add_agenda', 'change_agenda', 'delete_agenda', 'view_agenda',
     'view_lotevacina', 'view_paciente', 'view_vacinacao']
     permissoes = Permission.objects.filter(codename__in=codenames)
     groupCoordenador.permissions.add(*permissoes)
@@ -34,10 +36,17 @@ def criar_grupos(apps, schema_editor):
 
     Group.objects.create(name=settings.GRUPOS['paciente'])
     groupPaciente = Group.objects.get(name=settings.GRUPOS['paciente'])
-    codenames = ['add_vacinacao']
+    codenames = ['add_vacinacao', 'view_agenda']
     permissoes = Permission.objects.filter(codename__in=codenames)
     groupPaciente.permissions.add(*permissoes)
     groupPaciente.save()
+
+def popular_vacina(apps, schema_editor):
+    Vacina.objects.create(descricao='vacina contra a tuberculose', sigla='BCG')
+    Vacina.objects.create(descricao='vacina contra a hepatite B', sigla='VHB')
+    Vacina.objects.create(descricao='vacina contra a poliomielite', sigla='SABIN')
+    Vacina.objects.create(descricao='vacina contra febre amarela', sigla='FA')
+    Vacina.objects.create(descricao='vacina contra sarampo, caxumba e rubéola', sigla='Tríplice Viral')
 
 class Migration(migrations.Migration):
     dependencies = [
@@ -45,4 +54,5 @@ class Migration(migrations.Migration):
     ]
     operations = [
         migrations.RunPython(criar_grupos),
+        migrations.RunPython(popular_vacina),
     ]

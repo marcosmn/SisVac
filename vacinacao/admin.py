@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Vacina, LoteVacina, Municipio, Estabelecimento
-from .models import Vacinacao, VinculoProfissional, Profissional, Paciente
+from .models import Vacinacao, VinculoProfissional, Profissional, Paciente, Agenda
 
 from django.urls import path
 from django import forms
@@ -133,6 +133,8 @@ class EstabelecimentoAdmin(admin.ModelAdmin):
         return render(
             request, "custom_admin/csv_form.html", payload
         )
+
+admin.site.register(Agenda)
 
 admin.site.register(Vacinacao)
 

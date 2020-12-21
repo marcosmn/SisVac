@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
-from vacinacao.models import Vacinacao, Estabelecimento, Paciente
+from vacinacao.models import Vacinacao, Estabelecimento, Paciente, Agenda
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -20,9 +20,8 @@ class CarteiraSerializer(serializers.ModelSerializer):
 
 class AgendamentoSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Vacinacao
-        fields = ['data_agendamento', 'vacina', 'estabelecimento', 'paciente']
-        #read_only_fields = ['paciente']
+        model = Agenda
+        fields = ['data_agendamento', 'hora', 'vacina', 'estabelecimento']
 
 class FilaDeEsperaSerializer(serializers.ModelSerializer):
     class Meta:

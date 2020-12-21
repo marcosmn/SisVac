@@ -3,7 +3,7 @@
 from django.http import HttpResponse
 
 from django.contrib.auth.models import User, Group
-from vacinacao.models import Vacinacao, Paciente
+from vacinacao.models import Vacinacao, Paciente, Agenda
 from rest_framework import viewsets
 from rest_framework import permissions
 from vacinacao.serializers import UserSerializer, GroupSerializer, AgendamentoSerializer
@@ -26,15 +26,22 @@ class GroupViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.DjangoModelPermissionsOrAnonReadOnly]
 
 class AgendamentoViewSet(viewsets.ModelViewSet):
-    queryset = Vacinacao.objects.all().order_by('-data_agendamento')
+    queryset = Agenda.objects.all().order_by('-data_agendamento').order_by('-hora')
     serializer_class = AgendamentoSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def post(self, request, format=None):
         usuario = self.request.user
+        Vacinacao.objects.create(
+            data_solicitacao=datetime.date.today(), 
+            data_agendamento=request.data,
+            vacina='BCG',
+            paciente='BCG',
+            estabelecimento='BCG',
+        )
         serializer = AgendamentoSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save(paciente=usuario.paciente)
+            serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
