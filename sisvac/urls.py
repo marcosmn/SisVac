@@ -42,6 +42,7 @@ urlpatterns = [
     path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     path('api/v1/', include(router.urls)),
     path('api/v1/currentuser/', loginviews.UserLoginViewSet.as_view(), name='currentuser'),
+    path('api/v1/currentuser/dados', loginviews.UserDadosViewSet.as_view(), name='currentuserdados'),
     path('api/v1/currentuser/logout', loginviews.UserLogout.as_view(), name='logout'),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
     #path('api/v1/', include('rest_framework.urls', namespace='rest_framework'))

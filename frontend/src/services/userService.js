@@ -8,5 +8,9 @@ export default {
     logout() {
         return api.get('currentuser/logout')
             .then(response => response.data)
+    },
+    getDados() {
+        return api.get('currentuser/dados')
+            .then(response => response.data)
     }
 }

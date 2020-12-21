@@ -5,6 +5,7 @@ import NotFound from '../pages/NotFoundPage.vue'
 // Admin pages
 import Home from 'src/pages/Home.vue'
 import Login from 'src/pages/Login.vue'
+import UserProfile from 'src/pages/UserProfile.vue'
 
 const routes = [
   {
@@ -20,6 +21,11 @@ const routes = [
         path: '/user/login',
         name: 'login',
         component: Login,
+      },
+      {
+        path: '/user/cadastro',
+        name: 'cadastro',
+        component: UserProfile,
       }
     ]
   },
