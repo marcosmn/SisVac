@@ -16,5 +16,9 @@ export default {
     salvarDados(dados) {
         return api.put('currentuser/dados', dados)
             .then(response => response.data)
+    },
+    getCarteira() {
+        return api.get('carteira')
+            .then(response => response.data)
     }
 }
