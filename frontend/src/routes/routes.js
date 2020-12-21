@@ -8,6 +8,7 @@ import Login from 'src/pages/Login.vue'
 import UserProfile from 'src/pages/UserProfile.vue'
 import Carteira from 'src/pages/Carteira.vue'
 import Agendamento from 'src/pages/Agendamento.vue'
+import TableList from 'src/pages/TableList.vue'
 
 const routes = [
   {
@@ -42,7 +43,7 @@ const routes = [
       {
         path: '/vacina/fila',
         name: 'fila',
-        component: Agendamento,
+        component: TableList,
       }
     ]
   },
