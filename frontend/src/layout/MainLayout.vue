@@ -6,9 +6,21 @@
         <i class="nc-icon nc-bank"></i>
         <p>Home</p>
       </sidebar-link>
-      <sidebar-link to="/user/notifications">
+      <sidebar-link to="/user/cadastro">
         <i class="nc-icon nc-bell-55"></i>
-        <p>Notificações</p>
+        <p>Cadastro</p>
+      </sidebar-link>
+      <sidebar-link to="/vacina/agendar">
+        <i class="nc-icon nc-bell-55"></i>
+        <p>Agendar</p>
+      </sidebar-link>
+      <sidebar-link to="/user/carteira">
+        <i class="nc-icon nc-bell-55"></i>
+        <p>Carteira</p>
+      </sidebar-link>
+      <sidebar-link to="/vacina/fila">
+        <i class="nc-icon nc-bell-55"></i>
+        <p>Fila Espera</p>
       </sidebar-link>
     </side-bar>
     <div class="main-panel">

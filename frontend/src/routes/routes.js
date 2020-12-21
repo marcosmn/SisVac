@@ -7,6 +7,7 @@ import Home from 'src/pages/Home.vue'
 import Login from 'src/pages/Login.vue'
 import UserProfile from 'src/pages/UserProfile.vue'
 import Carteira from 'src/pages/Carteira.vue'
+import Agendamento from 'src/pages/Agendamento.vue'
 
 const routes = [
   {
@@ -32,6 +33,16 @@ const routes = [
         path: '/user/carteira',
         name: 'carteria',
         component: Carteira,
+      },
+      {
+        path: '/vacina/agendar',
+        name: 'agendamento',
+        component: Agendamento,
+      },
+      {
+        path: '/vacina/fila',
+        name: 'fila',
+        component: Agendamento,
       }
     ]
   },
