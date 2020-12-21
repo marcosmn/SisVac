@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
+import django_heroku
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -243,8 +244,13 @@ SOCIAL_AUTH_PIPELINE = (
     # Update the user record with any changed info from the auth service.
     'social_core.pipeline.user.user_details',
 )
+
 GRUPOS = {
     'profissional': 'Profissional de Saúde',
     'coordenador': 'Coordenador do SUS',
     'paciente': 'Paciente'
 }
+
+# Configurações do Heroku
+STATIC_ROOT = os.path.join(BASE_DIR, 'dist')
+django_heroku.settings(locals())
