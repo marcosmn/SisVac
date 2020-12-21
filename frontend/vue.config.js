@@ -8,7 +8,7 @@ function resolveSrc(_path) {
 module.exports = {
   lintOnSave: false,
   outputDir: '../dist',
-  assetsDir: 'static',
+  publicPath: '/static',
   configureWebpack: {
     // Set up all the aliases we use in our app.
     resolve: {
@@ -24,11 +24,16 @@ module.exports = {
     ]
   },
   pwa: {
+    workboxPluginMode: "InjectManifest",
+    workboxOptions: {
+      importWorkboxFrom: 'local',
+      swSrc: "src/service-worker.js",
+    },
     name: 'Carteira de Vacinação Virtual',
     themeColor: '#344675',
     msTileColor: '#344675',
     appleMobileWebAppCapable: 'yes',
-    appleMobileWebAppStatusBarStyle: '#344675'
+    appleMobileWebAppStatusBarStyle: '#344675',
   },
   css: {
     // Enable CSS source maps.
