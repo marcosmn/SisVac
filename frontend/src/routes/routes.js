@@ -10,6 +10,7 @@ import Carteira from 'src/pages/Carteira.vue'
 import Agendamento from 'src/pages/Agendamento.vue'
 import TableList from 'src/pages/TableList.vue'
 
+
 const routes = [
   {
     path: '/',
@@ -44,8 +45,9 @@ const routes = [
         path: '/vacina/fila',
         name: 'fila',
         component: TableList,
-      }
-    ]
+      },
+
+          ]
   },
  
   { path: '*', component: NotFound }
