@@ -15,6 +15,8 @@ import store from '@/store'
 import routes from './routes/routes'
 
 import './registerServiceWorker'
+
+
 // plugin setup
 Vue.use(VueRouter)
 Vue.use(LightBootstrap)
