@@ -23,25 +23,21 @@ def agendarVacinacao(dataAgendada, vacinacaoPrivada, keyVacina, keyPaciente, key
         estabelecimento = keyEstabelecimento
     )
 
-def aprovarVacinacao(keyVacinacao, dataAprovada):
+def aprovarVacinacao(keyVacinacao):
     print("Aprovando vacinação")
     vacinacao = Vacinacao.objects.get(id=keyVacinacao)
-    vacinacao.data_aprovado = dataAprovada
+    vacinacao.data_aprovado = datetime.now()
     vacinacao.save()
 
-def aplicarVacinacao(keyVacinacao, dataAplicada):
+def aplicarVacinacao(keyVacinacao):
     print("Aplicando vacinação")
     vacinacao = Vacinacao.objects.get(id=keyVacinacao)
-    vacinacao.data_vacinacao = dataAplicada
+    vacinacao.data_vacinacao = datetime.now()
     vacinacao.vacinado = True
     vacinacao.save()
 
-def VacinacoesHoje():
-    vacinacoesHoje = Vacinacao.objects.filter(data_agendamento=datetime.date.today())
-    return vacinacoesHoje
-
 def retornarPosicao(keyPaciente):
-    elementos = Vacinacao.objects.filter(data_agendamento=datetime.date.today())
+    elementos = Vacinacao.objects.filter(data_agendamento__date=datetime.date.today()).filter(vacinado=False)
     posicao = 0
     for elemento in elementos:
         if elemento.paciente == keyPaciente:
