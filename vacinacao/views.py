@@ -11,6 +11,7 @@ from vacinacao.serializers import CarteiraSerializer, FilaDeEsperaSerializer
 import datetime
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.renderers import JSONRenderer
 
 from vacinacao.teste import retornarPosicao
 
@@ -27,7 +28,15 @@ class GroupViewSet(viewsets.ModelViewSet):
 class AgendamentoViewSet(viewsets.ModelViewSet):
     queryset = Vacinacao.objects.all().order_by('-data_agendamento')
     serializer_class = AgendamentoSerializer
-    permission_classes = [permissions.DjangoModelPermissionsOrAnonReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+    def post(self, request, format=None):
+        usuario = self.request.user
+        serializer = AgendamentoSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(paciente=usuario.paciente)
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class CarteiraViewSet(viewsets.ModelViewSet):
     serializer_class = CarteiraSerializer
@@ -41,6 +50,7 @@ class FilaDeEsperaViewSet(viewsets.ModelViewSet):
     queryset = Vacinacao.objects.filter(data_agendamento__date=datetime.date.today()).filter(vacinado=False).order_by('-data_agendamento')
     serializer_class = FilaDeEsperaSerializer
     permission_classes = [permissions.IsAdminUser]
+
     def put(self, request, pk, format=None):
         snippet = self.get_object(pk)
         serializer = FilaDeEsperaSerializer(snippet, data=request.data)
@@ -48,16 +58,6 @@ class FilaDeEsperaViewSet(viewsets.ModelViewSet):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    def list(self, request):
-        usuario = self.request.user
-        if usuario.has_perm('aplicar_vacina'):
-            pass
-            #self.aplicarVacinacao(queryset[0])
-    def aplicarVacinacao(self, keyVacinacaoPassada):
-        vacinacao = Vacinacao.objects.get(id=keyVacinacaoPassada)
-        vacinacao.data_vacinacao = datetime.now()
-        vacinacao.vacinado = True
-        vacinacao.save()
 
 def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
