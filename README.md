@@ -19,17 +19,22 @@ O SisVac(Nome escolhido para o projeto), é um sistema onde usuarios cadastrados
 
 ## Executar localmente
 
-Necessario executar os comandos:
+**Necessario instalar as seguintes ferramentas**
 * [Python 3.8](http://install.python-guide.org).
 * [Postgresql 13](https://www.postgresql.org/download/).
 
-**Instalar dependencias necessárias**
+**Comando para instalar as dependencias necessárias**
 ```sh 
 pip install -r requirements.txt
 ```
-
-
-Crie um banco de dado no postgre com o nome 'vacinacao', depois rode os comandos:
+**Fazer o deploy do projeto front no backend**
+Executar os seguintes comandos na pasta ./frontend
+```sh 
+npm install
+npm run build
+```
+**Banco de dados**
+Crie um banco de dado no postgres com o nome 'vacinacao' e depois rode os comandos:
 ```sh 
 python manage.py migrate
 python manage.py runserver
