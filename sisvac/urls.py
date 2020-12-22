@@ -23,6 +23,7 @@ from rest_framework import routers
 from django.contrib.auth.models import User
 from vacinacao import views
 from vacinacao import loginviews
+from vacinacao import vacinaviews
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
@@ -31,6 +32,11 @@ router.register(r'groups', views.GroupViewSet)
 router.register(r'fila', views.FilaDeEsperaViewSet)
 router.register(r'carteira', views.CarteiraViewSet, basename=views.CarteiraSerializer)
 router.register(r'agendamento', views.AgendamentoViewSet)
+router.register(r'vacina', vacinaviews.VacinaViewSet, basename=vacinaviews.VacinaSerializer)
+router.register(r'municipio', vacinaviews.MunicipioViewSet,  basename=vacinaviews.MunicipioSerializer )
+router.register(r'estado', vacinaviews.EstadoViewSet )
+router.register(r'estabelecimento', vacinaviews.EstabelecimentoViewSet,  basename=vacinaviews.EstabelecimentoSerializer )
+router.register(r'agenda', vacinaviews.AgendaViewSet,  basename=vacinaviews.AgendaSerializer )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
