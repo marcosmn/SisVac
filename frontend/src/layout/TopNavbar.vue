@@ -23,7 +23,7 @@
         </ul>
         <ul class="navbar-nav ml-auto">
           <li v-if="logado" class="nav-item">
-            <a class="nav-link" href="#" style="color:blue;">
+            <a class="nav-link" href="#/user/cadastro" style="color:blue;">
               {{ nome }}
             </a>
           </li>
@@ -40,6 +40,7 @@
                 Sair
               </button>
           </li>
+          
         </ul>
       </div>
     </div>
