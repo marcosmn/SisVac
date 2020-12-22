@@ -3,19 +3,19 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-          <edit-profile-form>
-          </edit-profile-form>
+          <agendamento-form>
+          </agendamento-form>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-  import EditProfileForm from './UserProfile/EditProfileForm.vue'
+  import AgendamentoForm from './Agendamento/AgendamentoForm.vue'
 
   export default {
     components: {
-      EditProfileForm,
+      AgendamentoForm,
     }
   }
 
