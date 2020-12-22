@@ -8,7 +8,7 @@ URL para o site no Heroku [enigmatic-citadel-38291](https://enigmatic-citadel-38
 
 O SisVac(Nome escolhido para o projeto), é um sistema onde usuarios cadastrados podem agendar vacinas em lugar e horario de preferencia, de forma remota, e monitorar a sua carteira virtual de vacinação.
 
-### Funcionalidades usadas
+### Ferramentas e tecnologias utilizadas
 
 * Django
 * Django Rest Framework
@@ -17,31 +17,21 @@ O SisVac(Nome escolhido para o projeto), é um sistema onde usuarios cadastrados
 * Google OAuth2
 * Heroku
 
-## Rodando localmente
+## Executar localmente
 
-Necessario ter:
-* Python 3.7 [instalado localmente](http://install.python-guide.org).
-* Django 3.1 [instalado localmente](https://www.djangoproject.com/download/).
-```sh 
-pip install django
-```
-* Postgresql 13 [instalado localmente](https://www.postgresql.org/download/).
-* VueJS 
-```sh 
-npm install vue
-```
-* Django Rest Framework
-```sh 
-pip install djangorestframework
-```
-Para enviar aoa Heroku, você precisa instalar [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli).
+Necessario executar os comandos:
+* [Python 3.8](http://install.python-guide.org).
+* [Postgresql 13](https://www.postgresql.org/download/).
 
-Crie um banco de dado no postgre com o nome 'vacinacao', depois rode o comando:
+**Instalar dependencias necessárias**
+```sh 
+pip install -r requirements.txt
+```
+
+
+Crie um banco de dado no postgre com o nome 'vacinacao', depois rode os comandos:
 ```sh 
 python manage.py migrate
-```
-Depois basta rodar o servidor com:
-```sh 
 python manage.py runserver
 ```
 
@@ -49,7 +39,7 @@ python manage.py runserver
 
 ```sh
 $ heroku create
-$ git push heroku main
+$ git push heroku master
 
 $ heroku run python manage.py migrate
 $ heroku open
@@ -58,8 +48,4 @@ or
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-## Documentation
 
-Para mais informações sobre o uso de Python no Heroku, veja o artigo:
-
-- [Python on Heroku](https://devcenter.heroku.com/categories/python)
