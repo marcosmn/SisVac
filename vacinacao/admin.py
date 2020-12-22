@@ -12,8 +12,26 @@ class CsvUploadForm(forms.Form):
     csv_file = forms.FileField()
 
 admin.site.register(Vacina)
+#class VacinaAdmin(admin.ModelAdmin):
 
-admin.site.register(LoteVacina)
+@admin.register(LoteVacina)
+class LoteVacinaAdmin(admin.ModelAdmin):
+    change_list_template = "custom_admin/ver_lotevacinas.html"
+
+    def get_urls(self):
+        urls = super().get_urls()
+        my_urls = [
+            path('/', self.lotesAtivos),
+        ]
+        return my_urls + urls
+    
+    def lotesAtivos(self, request):
+        quantidade=0
+        for p in LoteVacina.objects.raw('SELECT * FROM vacinacao_lotevacina WHERE quantidade_estoque > 0'):
+            quantidade+=1
+        print(quantidade)
+        self.message_user(request, quantidade)
+        return redirect("..")
 
 @admin.register(Municipio)
 class MunicipioAdmin(admin.ModelAdmin):
