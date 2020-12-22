@@ -17,36 +17,35 @@ O SisVac(Nome escolhido para o projeto), é um sistema onde usuarios cadastrados
 * Google OAuth2
 * Heroku
 
-# Getting Started
+## Rodando localmente
 
-A barebones Django app, which can easily be deployed to Heroku.
+Necessario ter:
+* Python 3.7 [instalado localmente](http://install.python-guide.org).
+* Django 3.1 [instalado localmente](https://www.djangoproject.com/download/).
+```sh 
+pip install django
+```
+* Postgresql 13 [instalado localmente](https://www.postgresql.org/download/).
+* VueJS 
+```sh 
+npm install vue
+```
+* Django Rest Framework
+```sh 
+pip install djangorestframework
+```
+Para enviar aoa Heroku, você precisa instalar [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli).
 
-This application supports the [Getting Started with Python on Heroku](https://devcenter.heroku.com/articles/getting-started-with-python) article - check it out.
-
-## Running Locally
-
-Make sure you have Python 3.7 [installed locally](http://install.python-guide.org). To push to Heroku, you'll need to install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli), as well as [Postgres](https://devcenter.heroku.com/articles/heroku-postgresql#local-setup).
-
-```sh
-$ git clone https://github.com/heroku/python-getting-started.git
-$ cd python-getting-started
-
-$ python3 -m venv getting-started
-$ pip install -r requirements.txt
-
-$ createdb python_getting_started
-
-$ python manage.py migrate
-$ python manage.py collectstatic
-
-$ heroku local
+Crie um banco de dado no postgre com o nome 'vacinacao', depois rode o comando:
+```sh 
+python manage.py migrate
+```
+Depois basta rodar o servidor com:
+```sh 
+python manage.py runserver
 ```
 
-Your app should now be running on [localhost:5000](http://localhost:5000/).
-
 ## Deploying to Heroku
-
-URL para o site no Heroku [enigmatic-citadel-38291](https://enigmatic-citadel-38291.herokuapp.com/#/).
 
 ```sh
 $ heroku create
@@ -61,6 +60,6 @@ or
 
 ## Documentation
 
-For more information about using Python on Heroku, see these Dev Center articles:
+Para mais informações sobre o uso de Python no Heroku, veja o artigo:
 
 - [Python on Heroku](https://devcenter.heroku.com/categories/python)
