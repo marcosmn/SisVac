@@ -36,6 +36,7 @@ class LoteVacinaAdmin(admin.ModelAdmin):
 @admin.register(Municipio)
 class MunicipioAdmin(admin.ModelAdmin):
     change_list_template = "custom_admin/csv_upload_form.html"
+    list_filter = ("uf", )
 
     def get_urls(self):
         urls = super().get_urls()
@@ -161,3 +162,8 @@ admin.site.register(VinculoProfissional)
 admin.site.register(Profissional)
 
 admin.site.register(Paciente)
+
+quantidade=0
+for p in LoteVacina.objects.raw('SELECT * FROM vacinacao_lotevacina WHERE quantidade_estoque > 0'):
+    quantidade+=1
+admin.site.site_header = "Quantidade de lotes ativos: " + str(quantidade)

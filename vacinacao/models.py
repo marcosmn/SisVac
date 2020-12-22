@@ -8,6 +8,9 @@ class Vacina(models.Model):
     sigla = models.CharField(max_length=15)
     doses = models.IntegerField(default=1)
 
+    def __str__(self):
+        return f"{self.descricao}"
+
 class LoteVacina(models.Model):
     lote_vacina_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     codigo = models.CharField(max_length=255)
@@ -17,11 +20,17 @@ class LoteVacina(models.Model):
     quantidade_estoque = models.IntegerField()
     vacina = models.ForeignKey(Vacina, on_delete=models.PROTECT)
 
+    def __str__(self):
+        return f"{self.vacina.descricao}"
+
 class Profissional(models.Model):
     profissional_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     nome = models.CharField(max_length=254, null=True)
     salario = models.IntegerField(null=True)
     user = models.OneToOneField(User, on_delete=models.PROTECT, null=True)
+
+    def __str__(self):
+        return f"{self.nome}"
 
 class Estabelecimento(models.Model):
     co_unidade = models.CharField(max_length=255)
@@ -81,11 +90,17 @@ class Estabelecimento(models.Model):
     ds_natureza_jur = models.CharField(max_length=255)
     funcionarios = models.ManyToManyField(Profissional, through='VinculoProfissional')
 
+    def __str__(self):
+        return f"{self.no_fantasia}"
+
 class Municipio(models.Model):
     uf = models.IntegerField()
     nome_uf = models.CharField(max_length=20)
     codigo_municipio = models.IntegerField()
     nome_municipio = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f"{self.nome_municipio}"
 
 class Paciente(models.Model):
     paciente_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -100,6 +115,9 @@ class Paciente(models.Model):
     cpf = models.CharField(verbose_name="número do cpf", max_length=11,  null=True)
     data_cadastro = models.DateTimeField(auto_now_add=True)
     municipio = models.ForeignKey(Municipio, on_delete=models.PROTECT, null=True)
+
+    def __str__(self):
+        return f"{self.nome}"
 
 class Vacinacao(models.Model):
     vacinacao_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -118,6 +136,9 @@ class Vacinacao(models.Model):
             ('aprovar_vacina', "Pode aprovar vacina")
         )
 
+    def __str__(self):
+        return f"{self.paciente.nome}"
+
 class VinculoProfissional(models.Model):
     vinculo_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     data_entrada = models.DateTimeField()
@@ -125,6 +146,9 @@ class VinculoProfissional(models.Model):
     vinculado = models.BooleanField()
     profissional = models.ForeignKey(Profissional, on_delete=models.PROTECT)
     estabelecimento = models.ForeignKey(Estabelecimento, on_delete=models.PROTECT)
+
+    def __str__(self):
+        return f"{self.profissional.nome}"
 
 class Agenda(models.Model):
     agenda_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
