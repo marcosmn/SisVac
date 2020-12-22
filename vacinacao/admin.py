@@ -27,11 +27,11 @@ class LoteVacinaAdmin(admin.ModelAdmin):
         return my_urls + urls
     
     def lotesAtivos(self, request):
-        quantidade=0
-        for p in LoteVacina.objects.raw('SELECT * FROM vacinacao_lotevacina WHERE quantidade_estoque > 0'):
-            quantidade+=1
-        print(quantidade)
-        self.message_user(request, quantidade)
+        #quantidade=0
+        #for p in LoteVacina.objects.raw('SELECT * FROM vacinacao_lotevacina WHERE quantidade_estoque > 0'):
+        #    quantidade+=1
+        #print(quantidade)
+        #self.message_user(request, quantidade)
         return redirect("..")
 
 @admin.register(Municipio)
@@ -166,7 +166,7 @@ admin.site.register(Profissional)
 
 admin.site.register(Paciente)
 
-quantidade=0
-for p in LoteVacina.objects.raw('SELECT * FROM vacinacao_lotevacina WHERE quantidade_estoque > 0'):
-    quantidade+=1
-admin.site.site_header = "Quantidade de lotes ativos: " + str(quantidade)
+#quantidade=0
+#for p in LoteVacina.objects.raw('SELECT * FROM vacinacao_lotevacina WHERE quantidade_estoque > 0'):
+#    quantidade+=1
+#admin.site.site_header = "Quantidade de lotes ativos: " + str(quantidade)
