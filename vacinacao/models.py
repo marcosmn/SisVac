@@ -9,7 +9,7 @@ class Vacina(models.Model):
     doses = models.IntegerField(default=1)
 
     def __str__(self):
-        return f"{self.descricao}"
+        return f"{self.sigla}"
 
 class LoteVacina(models.Model):
     lote_vacina_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -21,7 +21,7 @@ class LoteVacina(models.Model):
     vacina = models.ForeignKey(Vacina, on_delete=models.PROTECT)
 
     def __str__(self):
-        return f"{self.vacina.descricao}"
+        return f"{self.vacina.sigla}"
 
 class Profissional(models.Model):
     profissional_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)

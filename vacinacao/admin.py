@@ -17,6 +17,7 @@ admin.site.register(Vacina)
 @admin.register(LoteVacina)
 class LoteVacinaAdmin(admin.ModelAdmin):
     change_list_template = "custom_admin/ver_lotevacinas.html"
+    list_filter = ("vacina", )
 
     def get_urls(self):
         urls = super().get_urls()
@@ -155,7 +156,9 @@ class EstabelecimentoAdmin(admin.ModelAdmin):
 
 admin.site.register(Agenda)
 
-admin.site.register(Vacinacao)
+@admin.register(Vacinacao)
+class VacinacaoAdmin(admin.ModelAdmin):
+    list_filter = ("data_agendamento", )
 
 admin.site.register(VinculoProfissional)
 
